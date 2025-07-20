@@ -50,8 +50,8 @@ function TailorProfileContent({ params }: { params: { id: string } }) {
   const { toast } = useToast();
 
   const initialService = searchParams.get('service') || '';
-  const initialMeasurementOption = searchParams.get('measurementOption') || 'provide-own';
-  const initialDeliveryOption = searchParams.get('deliveryOption') || 'pickup';
+  const initialMeasurementOption = searchParams.get('measurementOption') || '';
+  const initialDeliveryOption = searchParams.get('deliveryOption') || '';
   
   const [unit, setUnit] = useState('in');
   const [selectedService, setSelectedService] = useState(initialService);
@@ -390,3 +390,5 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     </Suspense>
   )
 }
+
+    
