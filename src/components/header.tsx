@@ -10,7 +10,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/#features', label: 'Features' },
-  { href: '/discover', label: 'Discover' },
 ];
 
 export default function Header() {
@@ -18,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Scissors className="h-6 w-6 text-primary" />
@@ -26,7 +25,7 @@ export default function Header() {
           </Link>
         </div>
         
-        <nav className="hidden md:flex gap-6 absolute left-1/2 -translate-x-1/2">
+        <nav className="hidden md:flex gap-1 mx-auto">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -38,16 +37,16 @@ export default function Header() {
           ))}
         </nav>
         
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 ml-auto">
+           <Button asChild>
+              <Link href="/discover">Get Started</Link>
+            </Button>
           <Button asChild variant="ghost">
             <Link href="/login">Login</Link>
           </Button>
-          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            <Link href="/signup">Sign Up</Link>
-          </Button>
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden ml-auto">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -72,12 +71,19 @@ export default function Header() {
                       {link.label}
                     </Link>
                   ))}
+                   <Link
+                      href="/discover"
+                      className="text-lg font-medium text-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Get Started
+                    </Link>
                 </nav>
                  <div className="flex flex-col gap-2 border-t pt-6">
                     <Button asChild variant="ghost">
                       <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
                     </Button>
-                    <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                    <Button asChild>
                       <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</Link>
                     </Button>
                   </div>

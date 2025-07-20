@@ -11,7 +11,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/ui/input';
 import { useState, useEffect } from 'react';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 
 const allTailors = [
@@ -20,7 +19,7 @@ const allTailors = [
   { id: 3, name: 'Stitch Perfect Kids', type: 'Kids Apparel', distance: 3.1, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'children clothing' },
   { id: 4, name: 'Modern Alterations', type: 'Alterations', distance: 4.0, rating: 4.6, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine' },
   { id: 5, name: 'The Bridal Tailor', type: "Bridal Gowns", distance: 5.2, rating: 5.0, image: 'https://placehold.co/400x300.png', aihint: 'wedding dress' },
-  { id: 6, name: 'Dapper Dans', type: "Men's Suits", distance: 6.8, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'mens suit' },
+  { id: 6, name: 'Dapper Dans', type: "Men's Fashion", distance: 6.8, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'mens suit' },
   { id: 7, name: 'Ultimate Alterations', type: 'Alterations', distance: 8.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine thread' },
   { id: 8, name: 'Glamour Gowns', type: "Women's Wear", distance: 12.0, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'evening gown' },
 ];
@@ -40,7 +39,7 @@ export default function DiscoverPage() {
     }
     
     if (stitchingType !== 'all') {
-      tailors = tailors.filter(tailor => tailor.type.toLowerCase().replace(/ /g, '-') === stitchingType);
+      tailors = tailors.filter(tailor => tailor.type === stitchingType);
     }
     
     tailors = tailors.filter(tailor => tailor.distance <= distance);
@@ -88,11 +87,11 @@ export default function DiscoverPage() {
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="all">All Types</SelectItem>
-                                <SelectItem value="mens-fashion">Men's Fashion</SelectItem>
-                                <SelectItem value="womens-wear">Women's Wear</SelectItem>
-                                <SelectItem value="kids-apparel">Kids Apparel</SelectItem>
-                                <SelectItem value="alterations">Alterations</SelectItem>
-                                <SelectItem value="bridal-gowns">Bridal Gowns</SelectItem>
+                                <SelectItem value="Men's Fashion">Men's Fashion</SelectItem>
+                                <SelectItem value="Women's Wear">Women's Wear</SelectItem>
+                                <SelectItem value="Kids Apparel">Kids Apparel</SelectItem>
+                                <SelectItem value="Alterations">Alterations</SelectItem>
+                                <SelectItem value="Bridal Gowns">Bridal Gowns</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
