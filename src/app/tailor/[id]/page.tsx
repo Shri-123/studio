@@ -34,7 +34,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
         <div className="lg:col-span-2">
           <Card className="overflow-hidden">
             <div className="relative h-64 w-full">
-              <Image src="https://placehold.co/800x300.png" alt={`${tailor.name} shop front`} layout="fill" objectFit="cover" data-ai-hint="boutique storefront" />
+              <Image src="https://placehold.co/800x300.png" alt={`${tailor.name} shop front`} fill className="object-cover" data-ai-hint="boutique storefront" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
                 <h1 className="text-4xl font-bold text-white font-headline">{tailor.name}</h1>
                 <div className="flex items-center gap-4 mt-2">
@@ -71,7 +71,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {tailor.gallery.map(image => (
                     <div key={image.id} className="relative aspect-square rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
-                      <Image src={image.src} alt={image.alt} layout="fill" objectFit="cover" data-ai-hint={image.aihint}/>
+                      <Image src={image.src} alt={image.alt} fill className="object-cover" data-ai-hint={image.aihint}/>
                     </div>
                   ))}
                 </div>

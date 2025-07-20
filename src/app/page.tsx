@@ -30,9 +30,8 @@ export default function Home() {
                <Image
                 src="https://placehold.co/600x400.png"
                 alt="Tailor at work"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-500 hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-500 hover:scale-105"
                 data-ai-hint="tailor sewing"
               />
                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

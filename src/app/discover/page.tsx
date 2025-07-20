@@ -87,8 +87,8 @@ export default function DiscoverPage() {
                     <Image
                       src={tailor.image}
                       alt={tailor.name}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      className="object-cover"
                       data-ai-hint={tailor.aihint}
                     />
                   </div>

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { PT_Sans } from 'next/font/google';
+import { Roboto_Mono } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
 
-const ptSans = PT_Sans({
+const robotoMono = Roboto_Mono({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-sans',
@@ -27,14 +27,14 @@ export default function RootLayout({
       <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased',
-          ptSans.variable
+          robotoMono.variable
         )}
       >
         <div className="relative flex min-h-screen flex-col">
