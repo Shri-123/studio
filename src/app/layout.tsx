@@ -1,15 +1,20 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Roboto_Mono } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-const robotoMono = Roboto_Mono({
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-sans',
+  variable: '--font-headline',
 });
 
 export const metadata: Metadata = {
@@ -25,17 +30,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased',
-          robotoMono.variable
+          inter.variable,
+          playfairDisplay.variable
         )}
       >
         <div className="relative flex min-h-screen flex-col">

@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['"Roboto Mono"', 'monospace'],
-        headline: ['"Roboto Mono"', 'monospace'],
+        body: ['var(--font-sans)', 'sans-serif'],
+        headline: ['var(--font-headline)', 'serif'],
         code: ['monospace'],
       },
       colors: {
