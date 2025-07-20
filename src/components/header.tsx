@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
+  { href: '/#about', label: 'About' },
   { href: '/discover', label: 'Discover' },
 ];
 
@@ -20,12 +20,10 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-          <div className="hidden md:flex">
-            <Link href="/" className="flex items-center gap-2">
-              <Scissors className="h-6 w-6 text-primary" />
-              <span className="font-bold text-lg font-headline text-primary">StitchLink</span>
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <Scissors className="h-6 w-6 text-primary" />
+            <span className="font-bold text-lg font-headline text-primary">StitchLink</span>
+          </Link>
           <nav className="hidden md:flex gap-6">
             {navLinks.map((link) => (
               <Link
@@ -39,11 +37,8 @@ export default function Header() {
           </nav>
         </div>
         
-        <div className="md:hidden flex-1">
-           <Link href="/" className="flex items-center gap-2">
-              <Scissors className="h-6 w-6 text-primary" />
-              <span className="font-bold text-lg font-headline text-primary">StitchLink</span>
-            </Link>
+        <div className="md:hidden flex-1 flex justify-end">
+           {/* Mobile menu trigger */}
         </div>
 
         <div className="flex items-center gap-2">
