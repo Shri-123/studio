@@ -17,7 +17,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" aria-disabled={pending} disabled={pending} className="w-full sm:w-auto bg-accent hover:bg-accent/90">
+    <Button type="submit" aria-disabled={pending} disabled={pending} className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90">
       {pending ? 'Generating...' : 'Suggest Patterns'}
     </Button>
   );
@@ -35,7 +35,7 @@ export default function PatternSuggestion({ garmentDescription }: { garmentDescr
           name="garmentDescription"
           defaultValue={garmentDescription}
           readOnly
-          className="bg-secondary/70"
+          className="bg-secondary"
         />
       </div>
       <div className="flex justify-end">
@@ -45,12 +45,12 @@ export default function PatternSuggestion({ garmentDescription }: { garmentDescr
       {state.suggestions && state.suggestions.length > 0 && (
         <div className="space-y-4 pt-4">
             <h4 className="font-semibold text-lg">Suggested Patterns:</h4>
-            <Card className="bg-secondary/50">
+            <Card className="bg-secondary">
                 <CardContent className="p-4">
                     <ul className="space-y-2 list-disc list-inside">
                         {state.suggestions.map((suggestion, index) => (
                         <li key={index} className="flex items-start gap-2">
-                           <Lightbulb className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                           <Lightbulb className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                            <span>{suggestion}</span>
                         </li>
                         ))}
