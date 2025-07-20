@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Clock, DollarSign, MapPin, Phone, Shirt, Star } from 'lucide-react';
+import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useState } from 'react';
 
@@ -42,6 +42,7 @@ const serviceMeasurements: { [key: string]: string[] } = {
 export default function TailorProfilePage({ params }: { params: { id: string } }) {
   const [unit, setUnit] = useState('in');
   const [selectedService, setSelectedService] = useState('');
+  const [measurementOption, setMeasurementOption] = useState('provide-own');
   
   const measurements = selectedService ? serviceMeasurements[selectedService] : [];
 
@@ -119,8 +120,24 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                   </SelectContent>
                 </Select>
               </div>
+
+              <div className="space-y-2">
+                <Label>How to get measured?</Label>
+                <RadioGroup value={measurementOption} onValueChange={setMeasurementOption} className="grid grid-cols-2 gap-2">
+                    <Label htmlFor="provide-own" className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer">
+                      <RadioGroupItem value="provide-own" id="provide-own" className="sr-only" />
+                       <Ruler className="mb-2 h-6 w-6" />
+                      <span className="text-sm text-center">Provide my own</span>
+                    </Label>
+                    <Label htmlFor="call-tailor" className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer">
+                       <RadioGroupItem value="call-tailor" id="call-tailor" className="sr-only" />
+                      <Home className="mb-2 h-6 w-6" />
+                      <span className="text-sm text-center">Request home visit</span>
+                    </Label>
+                </RadioGroup>
+              </div>
               
-              {measurements.length > 0 && (
+              {measurements.length > 0 && measurementOption === 'provide-own' && (
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                       <Label>Measurements</Label>
