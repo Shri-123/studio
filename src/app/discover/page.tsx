@@ -22,13 +22,15 @@ const allTailors = [
   { id: 6, name: 'Dapper Dans', type: "Men's Fashion", distance: 6.8, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'mens suit' },
   { id: 7, name: 'Ultimate Alterations', type: 'Alterations', distance: 8.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine' },
   { id: 8, name: 'Glamour Gowns', type: "Women's Wear", distance: 12.0, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'evening gown' },
+  { id: 9, name: 'Urban Stitches', type: "Men's Fashion", distance: 13.5, rating: 4.5, image: 'https://placehold.co/400x300.png', aihint: 'modern menswear' },
+  { id: 10, name: 'Couture Corner', type: "Women's Wear", distance: 14.8, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'haute couture' },
 ];
 
 
 export default function DiscoverPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [stitchingType, setStitchingType] = useState('all');
-  const [distance, setDistance] = useState(5);
+  const [distance, setDistance] = useState(15);
   const [filteredTailors, setFilteredTailors] = useState(allTailors);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function DiscoverPage() {
   const clearFilters = () => {
     setSearchTerm('');
     setStitchingType('all');
-    setDistance(5);
+    setDistance(15);
   };
 
   return (
