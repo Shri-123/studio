@@ -42,7 +42,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-background/50 backdrop-blur-sm">
-                <Link href="/signup">
+                <Link href="/signup?role=tailor">
                   <Scissors className="mr-2 h-5 w-5" />
                   Join as a Tailor
                 </Link>
@@ -144,7 +144,7 @@ export default function Home() {
                             </li>
                         </ul>
                          <Button asChild size="lg" className="w-full mt-8 bg-primary hover:bg-primary/90 text-primary-foreground">
-                            <Link href="/signup">Join as Tailor</Link>
+                            <Link href="/signup?role=tailor">Join as Tailor</Link>
                         </Button>
                     </CardContent>
                 </Card>
