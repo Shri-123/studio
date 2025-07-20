@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center">
         <div className="absolute inset-0">
             <Image
-                src="https://images.unsplash.com/photo-1502217915754-8272dd84a805?auto=format&fit=crop&q=80&w=1920&h=1080"
+                src="https://placehold.co/600x400.png"
                 alt="Person getting measured by a tailor"
                 layout="fill"
                 objectFit="cover"
