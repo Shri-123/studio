@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Scissors, Search, MapPin, Clock, Shield, Star, Users, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
@@ -7,38 +8,51 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export default function Home() {
   return (
     <div className="flex flex-col min-h-[calc(100vh-4rem)]">
-      <section className="relative w-full py-20 md:py-32 lg:py-40 bg-background overflow-hidden">
+      <section className="relative w-full">
         <div className="container mx-auto px-4 md:px-6 z-10 relative">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter font-headline">
-                The Perfect Fit, <br />
-                <span className="text-primary">Perfectly Simple.</span>
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 max-w-lg">
-                Find skilled tailors nearby, browse their work, and get your
-                perfect fit. Quality craftsmanship meets modern convenience.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  <Link href="/discover">
-                    <Search className="mr-2 h-5 w-5" />
-                    Find a Tailor
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/signup">
-                    <Scissors className="mr-2 h-5 w-5" />
-                    Join as a Tailor
-                  </Link>
-                </Button>
+          <div className="lg:grid lg:gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="relative py-20 md:py-32 lg:py-40 text-center lg:text-left">
+               <div className="absolute inset-0 lg:hidden">
+                    <Image
+                        src="https://placehold.co/600x400.png"
+                        alt="Person getting measured by a tailor"
+                        layout="fill"
+                        objectFit="cover"
+                        className="opacity-20"
+                        data-ai-hint="tailor measurement"
+                    />
+                    <div className="absolute inset-0 bg-background/60 lg:hidden"></div>
+                </div>
+              <div className="relative z-10 space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter font-headline text-foreground lg:text-inherit">
+                  The Perfect Fit, <br />
+                  <span className="text-primary">Perfectly Simple.</span>
+                </h1>
+                <p className="text-lg md:text-xl text-foreground/80 max-w-lg mx-auto lg:mx-0">
+                  Find skilled tailors nearby, browse their work, and get your
+                  perfect fit. Quality craftsmanship meets modern convenience.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    <Link href="/discover">
+                      <Search className="mr-2 h-5 w-5" />
+                      Find a Tailor
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="bg-background/50 lg:bg-transparent">
+                    <Link href="/signup">
+                      <Scissors className="mr-2 h-5 w-5" />
+                      Join as a Tailor
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative hidden lg:block">
               <Image
                 src="https://placehold.co/600x400.png"
                 alt="Person getting measured by a tailor"
