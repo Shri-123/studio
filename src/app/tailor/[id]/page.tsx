@@ -1,3 +1,6 @@
+
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -8,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Clock, DollarSign, MapPin, Phone, Shirt, Star } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useState } from 'react';
 
 const tailor = {
   id: 1,
@@ -28,6 +32,8 @@ const tailor = {
 };
 
 export default function TailorProfilePage({ params }: { params: { id: string } }) {
+  const [unit, setUnit] = useState('in');
+
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="grid lg:grid-cols-3 gap-8">
@@ -102,9 +108,33 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="measurements">Measurements</Label>
-                <Textarea id="measurements" placeholder="e.g., Chest: 40in, Waist: 34in, Length: 30in..." className="min-h-[100px]" />
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                    <Label>Measurements</Label>
+                    <Select value={unit} onValueChange={setUnit}>
+                        <SelectTrigger className="w-[100px]">
+                            <SelectValue placeholder="Unit" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="in">in</SelectItem>
+                            <SelectItem value="cm">cm</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                    <div className="space-y-1">
+                        <Label htmlFor="chest" className="text-xs">Chest</Label>
+                        <Input id="chest" type="number" placeholder="40" className="text-center" />
+                    </div>
+                     <div className="space-y-1">
+                        <Label htmlFor="waist" className="text-xs">Waist</Label>
+                        <Input id="waist" type="number" placeholder="34" className="text-center" />
+                    </div>
+                     <div className="space-y-1">
+                        <Label htmlFor="length" className="text-xs">Length</Label>
+                        <Input id="length" type="number" placeholder="30" className="text-center" />
+                    </div>
+                </div>
               </div>
               <div className="space-y-2">
                 <Label>Delivery Option</Label>
