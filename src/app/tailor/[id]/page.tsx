@@ -334,8 +334,8 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                 </form>
             </div>
             <div className={cn("absolute bottom-16 left-1/2 -translate-x-1/2 transition-opacity duration-300", showScrollIndicator ? 'opacity-100' : 'opacity-0')}>
-                <div className="animate-bounce rounded-full bg-primary/20 p-2">
-                    <ArrowDown className="h-6 w-6 text-primary" />
+                <div className="animate-bounce rounded-full bg-primary p-2">
+                    <ArrowDown className="h-6 w-6 text-primary-foreground" />
                 </div>
             </div>
           </Card>
