@@ -36,7 +36,7 @@ export default function Header() {
             </Link>
           ))}
            <Button asChild variant="outline" size="sm">
-              <Link href="/discover">Get Started</Link>
+              <Link href="/discover">Find a Tailor</Link>
            </Button>
         </nav>
         
@@ -79,7 +79,7 @@ export default function Header() {
                       className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      Get Started
+                      Find a Tailor
                     </Link>
                 </nav>
                  <div className="flex flex-col gap-2 border-t pt-6">

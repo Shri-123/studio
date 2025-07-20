@@ -36,9 +36,9 @@ export default function Home() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
-                <Link href="/discover">
-                  <Search className="mr-2 h-5 w-5" />
-                  Find a Tailor
+                <Link href="/signup">
+                  <Users className="mr-2 h-5 w-5" />
+                  Join as Customer
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-background/50 backdrop-blur-sm">
@@ -102,7 +102,7 @@ export default function Home() {
                             </li>
                         </ul>
                         <Button asChild size="lg" className="w-full mt-8" variant="outline">
-                            <Link href="/discover">Start Shopping</Link>
+                            <Link href="/discover">Find a Tailor</Link>
                         </Button>
                     </CardContent>
                 </Card>
