@@ -20,7 +20,7 @@ const allTailors = [
   { id: 4, name: 'Modern Alterations', type: 'Alterations', distance: 4.0, rating: 4.6, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine' },
   { id: 5, name: 'The Bridal Tailor', type: "Bridal Gowns", distance: 5.2, rating: 5.0, image: 'https://placehold.co/400x300.png', aihint: 'wedding dress' },
   { id: 6, name: 'Dapper Dans', type: "Men's Fashion", distance: 6.8, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'mens suit' },
-  { id: 7, name: 'Ultimate Alterations', type: 'Alterations', distance: 8.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine thread' },
+  { id: 7, name: 'Ultimate Alterations', type: 'Alterations', distance: 8.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine' },
   { id: 8, name: 'Glamour Gowns', type: "Women's Wear", distance: 12.0, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'evening gown' },
 ];
 

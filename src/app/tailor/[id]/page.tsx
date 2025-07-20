@@ -247,6 +247,15 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="image-upload">Upload Design (Optional)</Label>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <FileUp className="mr-2 h-4 w-4" />
+                      Browse Design
+                    </Button>
                     <Input
                       id="image-upload"
                       type="file"
@@ -255,15 +264,6 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                       onChange={handleFileChange}
                       accept="image/*"
                     />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="w-full mt-2"
-                      onClick={() => fileInputRef.current?.click()}
-                    >
-                      <FileUp className="mr-2 h-4 w-4" />
-                      Browse Design
-                    </Button>
                     {designFile && designPreview && (
                       <div className="mt-2 text-sm text-muted-foreground">
                         <a
@@ -290,5 +290,3 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
-
-    
