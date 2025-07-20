@@ -31,8 +31,19 @@ const tailor = {
   ],
 };
 
+const serviceMeasurements: { [key: string]: string[] } = {
+  'suit-stitching': ['Chest', 'Waist', 'Shoulder', 'Sleeve', 'Jacket Length', 'Trouser Length'],
+  'shirt-making': ['Chest', 'Waist', 'Sleeve', 'Neck', 'Shirt Length'],
+  'custom-trousers': ['Waist', 'Hip', 'Inseam', 'Outseam'],
+  'alterations': ['Bust', 'Waist', 'Hips', 'Length to Alter'],
+  'jacket-lining': [],
+};
+
 export default function TailorProfilePage({ params }: { params: { id: string } }) {
   const [unit, setUnit] = useState('in');
+  const [selectedService, setSelectedService] = useState('');
+  
+  const measurements = selectedService ? serviceMeasurements[selectedService] : [];
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
@@ -97,46 +108,44 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
             <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="service">Service</Label>
-                <Select>
+                <Select onValueChange={setSelectedService} value={selectedService}>
                   <SelectTrigger id="service">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent>
                     {tailor.services.map(service => (
-                       <SelectItem key={service} value={service.toLowerCase().replace(' ', '-')}>{service}</SelectItem>
+                       <SelectItem key={service} value={service.toLowerCase().replace(/ /g, '-')}>{service}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                    <Label>Measurements</Label>
-                    <Select value={unit} onValueChange={setUnit}>
-                        <SelectTrigger className="w-[100px]">
-                            <SelectValue placeholder="Unit" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="in">in</SelectItem>
-                            <SelectItem value="cm">cm</SelectItem>
-                            <SelectItem value="m">m</SelectItem>
-                        </SelectContent>
-                    </Select>
+              
+              {measurements.length > 0 && (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                      <Label>Measurements</Label>
+                      <Select value={unit} onValueChange={setUnit}>
+                          <SelectTrigger className="w-[100px]">
+                              <SelectValue placeholder="Unit" />
+                          </SelectTrigger>
+                          <SelectContent>
+                              <SelectItem value="in">in</SelectItem>
+                              <SelectItem value="cm">cm</SelectItem>
+                              <SelectItem value="m">m</SelectItem>
+                          </SelectContent>
+                      </Select>
+                  </div>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                    {measurements.map((measurement) => (
+                      <div className="space-y-1" key={measurement}>
+                        <Label htmlFor={measurement.toLowerCase().replace(' ', '-')} className="text-xs">{measurement}</Label>
+                        <Input id={measurement.toLowerCase().replace(' ', '-')} type="number" placeholder="0" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2">
-                    <div className="space-y-1">
-                        <Label htmlFor="chest" className="text-xs">Chest</Label>
-                        <Input id="chest" type="number" placeholder="40" className="text-center" />
-                    </div>
-                     <div className="space-y-1">
-                        <Label htmlFor="waist" className="text-xs">Waist</Label>
-                        <Input id="waist" type="number" placeholder="34" className="text-center" />
-                    </div>
-                     <div className="space-y-1">
-                        <Label htmlFor="length" className="text-xs">Length</Label>
-                        <Input id="length" type="number" placeholder="30" className="text-center" />
-                    </div>
-                </div>
-              </div>
+              )}
+
               <div className="space-y-2">
                 <Label>Delivery Option</Label>
                 <RadioGroup defaultValue="pickup" className="flex gap-4">
@@ -166,4 +175,3 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
-
