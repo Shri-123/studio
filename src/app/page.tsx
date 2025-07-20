@@ -102,7 +102,10 @@ export default function Home() {
                             </li>
                         </ul>
                         <Button asChild size="lg" className="w-full mt-8" variant="outline">
-                            <Link href="/discover">Find a Tailor</Link>
+                            <Link href="/discover">
+                                <Search className="mr-2 h-5 w-5" />
+                                Find a Tailor
+                            </Link>
                         </Button>
                     </CardContent>
                 </Card>

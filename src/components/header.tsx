@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Scissors, X } from 'lucide-react';
+import { Menu, Scissors, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -36,7 +36,10 @@ export default function Header() {
             </Link>
           ))}
            <Button asChild variant="outline" size="sm">
-              <Link href="/discover">Find a Tailor</Link>
+              <Link href="/discover">
+                <Search className="mr-2 h-4 w-4" />
+                Find a Tailor
+              </Link>
            </Button>
         </nav>
         
@@ -76,9 +79,10 @@ export default function Header() {
                   ))}
                    <Link
                       href="/discover"
-                      className="text-lg font-medium text-foreground hover:text-primary transition-colors"
+                      className="flex items-center text-lg font-medium text-foreground hover:text-primary transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
+                      <Search className="mr-2 h-5 w-5" />
                       Find a Tailor
                     </Link>
                 </nav>
