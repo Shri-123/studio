@@ -30,7 +30,6 @@ export default function DiscoverPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [stitchingType, setStitchingType] = useState('all');
   const [distance, setDistance] = useState(15);
-  const [rating, setRating] = useState(1);
   const [filteredTailors, setFilteredTailors] = useState(allTailors);
 
   useEffect(() => {
@@ -45,10 +44,9 @@ export default function DiscoverPage() {
     }
     
     tailors = tailors.filter(tailor => tailor.distance <= distance);
-    tailors = tailors.filter(tailor => tailor.rating >= rating);
     
     setFilteredTailors(tailors);
-  }, [searchTerm, stitchingType, distance, rating]);
+  }, [searchTerm, stitchingType, distance]);
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
@@ -112,16 +110,6 @@ export default function DiscoverPage() {
                             <span>1 km</span>
                             <span>15 km</span>
                         </div>
-                    </div>
-                    <div className="grid gap-2">
-                        <Label className="text-sm font-medium">Min Rating</Label>
-                         <RadioGroup value={String(rating)} onValueChange={(val) => setRating(Number(val))} className="flex items-center space-x-2 pt-1">
-                            {[1, 2, 3, 4].map(star => (
-                                <Button key={star} variant={rating >= star ? 'default' : 'outline'} size="sm" onClick={() => setRating(star)}>
-                                    {star} <Star className="h-4 w-4 ml-1.5 fill-current"/>
-                                </Button>
-                            ))}
-                        </RadioGroup>
                     </div>
                 </CardContent>
             </Card>
