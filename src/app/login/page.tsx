@@ -7,7 +7,11 @@ import { Scissors, ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] bg-background px-4">
+    <div className="relative flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] bg-background px-4">
+       <Link href="/" className="absolute top-8 left-8 flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Home
+        </Link>
       <Card className="w-full max-w-sm mx-auto">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
@@ -46,12 +50,6 @@ export default function LoginPage() {
           </div>
         </CardContent>
       </Card>
-       <Button variant="link" asChild className="mt-6 text-muted-foreground">
-        <Link href="/">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Home
-        </Link>
-      </Button>
     </div>
   );
 }
