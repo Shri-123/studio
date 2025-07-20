@@ -35,15 +35,21 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+           <Link
+              href="/discover"
+              className="font-medium text-foreground/70 transition-colors px-3 py-2 rounded-md hover:text-primary hover:bg-primary/5"
+            >
+              Discover
+            </Link>
         </nav>
         
         <div className="hidden md:flex items-center gap-2 ml-auto">
-           <Button asChild>
-              <Link href="/discover">Get Started</Link>
-            </Button>
-          <Button asChild variant="ghost">
+           <Button asChild variant="ghost">
             <Link href="/login">Login</Link>
           </Button>
+          <Button asChild>
+              <Link href="/signup">Sign Up</Link>
+            </Button>
         </div>
 
         <div className="md:hidden ml-auto">
@@ -76,7 +82,7 @@ export default function Header() {
                       className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      Get Started
+                      Discover
                     </Link>
                 </nav>
                  <div className="flex flex-col gap-2 border-t pt-6">
