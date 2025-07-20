@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -9,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler } from 'lucide-react';
+import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useState } from 'react';
 
@@ -137,8 +138,8 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                 </RadioGroup>
               </div>
               
-              {measurements.length > 0 && measurementOption === 'provide-own' && (
-                <div className="space-y-4">
+              {measurementOption === 'provide-own' && measurements.length > 0 && (
+                <div className="space-y-4 border-l-2 border-primary/50 pl-4">
                   <div className="flex justify-between items-center">
                       <Label>Measurements</Label>
                       <Select value={unit} onValueChange={setUnit}>
@@ -164,18 +165,39 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
               )}
 
               <div className="space-y-2">
-                <Label>Delivery Option</Label>
-                <RadioGroup defaultValue="pickup" className="flex gap-4">
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="pickup" id="pickup" />
-                    <Label htmlFor="pickup">Shop Pickup</Label>
+                 <Label>Cloth Delivery</Label>
+                {measurementOption === 'provide-own' ? (
+                   <RadioGroup defaultValue="dropoff" className="grid grid-cols-1 gap-2">
+                     <Label htmlFor="dropoff-cloth" className="flex items-center gap-3 rounded-md border-2 border-muted bg-popover p-3 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer">
+                       <RadioGroupItem value="dropoff" id="dropoff-cloth" />
+                        <Scissors className="h-5 w-5 text-accent" />
+                       <span className="text-sm">I will drop it off at the shop</span>
+                     </Label>
+                   </RadioGroup>
+                ) : (
+                  <div className="flex items-center gap-3 rounded-md border-2 border-dashed bg-secondary p-3">
+                     <Home className="h-5 w-5 text-accent" />
+                    <span className="text-sm text-muted-foreground">You can hand over the cloth during the home visit.</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="dropoff" id="dropoff" />
-                    <Label htmlFor="dropoff">Customer Drop-off</Label>
-                  </div>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label>Finished Garment Delivery</Label>
+                <RadioGroup defaultValue="pickup" className="grid grid-cols-2 gap-2">
+                    <Label htmlFor="pickup" className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer">
+                      <RadioGroupItem value="pickup" id="pickup" className="sr-only" />
+                       <ShoppingBag className="mb-2 h-6 w-6" />
+                      <span className="text-sm text-center">Shop Pickup</span>
+                    </Label>
+                    <Label htmlFor="home-delivery" className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer">
+                       <RadioGroupItem value="home-delivery" id="home-delivery" className="sr-only" />
+                      <Truck className="mb-2 h-6 w-6" />
+                      <span className="text-sm text-center">Home Delivery</span>
+                    </Label>
                 </RadioGroup>
               </div>
+
               <div className="space-y-2">
                 <Label htmlFor="instructions">Custom Instructions</Label>
                 <Textarea id="instructions" placeholder="e.g., Add a pocket on the left side." />
@@ -192,3 +214,4 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
+
