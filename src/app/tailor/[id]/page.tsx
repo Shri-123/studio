@@ -259,6 +259,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                     <Button
                       type="button"
                       variant="outline"
+                      className="mt-2"
                       onClick={() => fileInputRef.current?.click()}
                     >
                       <FileUp className="mr-2 h-4 w-4" />
