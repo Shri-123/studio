@@ -25,7 +25,7 @@ export default function Header() {
           </Link>
         </div>
         
-        <nav className="hidden md:flex gap-1 mx-auto">
+        <nav className="hidden md:flex items-center gap-4 mx-auto">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -35,12 +35,9 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-           <Link
-              href="/discover"
-              className="font-medium text-foreground/70 transition-colors px-3 py-2 rounded-md hover:text-primary hover:bg-primary/5"
-            >
-              Discover
-            </Link>
+           <Button asChild variant="outline" size="sm">
+              <Link href="/discover">Get Started</Link>
+           </Button>
         </nav>
         
         <div className="hidden md:flex items-center gap-2 ml-auto">
@@ -82,7 +79,7 @@ export default function Header() {
                       className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      Discover
+                      Get Started
                     </Link>
                 </nav>
                  <div className="flex flex-col gap-2 border-t pt-6">
