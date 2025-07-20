@@ -2,11 +2,12 @@
 "use client";
 
 import { useSearchParams } from 'next/navigation';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { CheckCircle, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, CreditCard, ShoppingBag, Truck } from 'lucide-react';
 import { Suspense } from 'react';
+import { Separator } from '@/components/ui/separator';
 
 const servicePrices: { [key: string]: number } = {
   'suit-stitching': 250,
@@ -16,11 +17,24 @@ const servicePrices: { [key: string]: number } = {
   'jacket-lining': 60,
 };
 
+const PLATFORM_FEE = 5.00;
+const TAX_RATE = 0.08; // 8%
+
+function toTitleCase(str: string) {
+    if (!str) return '';
+    return str.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
+
+
 function AmountContent() {
     const searchParams = useSearchParams();
     const service = searchParams.get('service') || '';
-    const serviceName = service.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    const amount = servicePrices[service] || 0;
+    const measurementOption = searchParams.get('measurementOption') || 'provide-own';
+    const deliveryOption = searchParams.get('deliveryOption') || 'pickup';
+    
+    const baseAmount = servicePrices[service] || 0;
+    const taxAmount = baseAmount * TAX_RATE;
+    const totalAmount = baseAmount + taxAmount + PLATFORM_FEE;
 
     return (
         <div className="min-h-screen w-full bg-background relative flex items-center justify-center p-4">
@@ -28,30 +42,64 @@ function AmountContent() {
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Home
             </Link>
-            <Card className="w-full max-w-md mx-auto text-center">
+            <Card className="w-full max-w-lg mx-auto">
                 <CardHeader>
-                    <div className="flex justify-center mb-4">
-                        <CheckCircle className="h-16 w-16 text-green-500" />
-                    </div>
-                    <CardTitle className="text-3xl font-headline text-primary">Order Submitted!</CardTitle>
-                    <CardDescription>Your order request has been sent to the tailor.</CardDescription>
+                    <CardTitle className="text-3xl font-headline text-primary">Confirm Your Order</CardTitle>
+                    <CardDescription>Review your order details before proceeding to payment.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                    <div className="bg-secondary/50 p-6 rounded-lg">
-                        <p className="text-lg font-semibold">Service: {serviceName}</p>
-                        <p className="text-4xl font-bold text-foreground mt-2">${amount.toFixed(2)}</p>
-                        <p className="text-sm text-muted-foreground mt-1">Estimated Cost</p>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-3">Order Summary</h3>
+                        <div className="space-y-4 rounded-lg border bg-secondary/30 p-4">
+                            <div className="flex justify-between">
+                                <span className="text-muted-foreground">Service:</span>
+                                <span className="font-medium">{toTitleCase(service)}</span>
+                            </div>
+                             <Separator />
+                            <div className="flex justify-between">
+                                <span className="text-muted-foreground">Measurements:</span>
+                                <span className="font-medium">{toTitleCase(measurementOption)}</span>
+                            </div>
+                             <Separator />
+                            <div className="flex justify-between items-center">
+                                <span className="text-muted-foreground">Delivery:</span>
+                                <div className="flex items-center gap-2 font-medium">
+                                    {deliveryOption === 'pickup' ? <ShoppingBag className="h-4 w-4" /> : <Truck className="h-4 w-4" />}
+                                    <span>{toTitleCase(deliveryOption)}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">The tailor will review your request and confirm the order. You can track the status in your account.</p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                         <Button asChild className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground">
-                            <Link href="/account/orders">View My Orders</Link>
-                        </Button>
-                        <Button asChild variant="outline" className="w-full sm:w-auto">
-                            <Link href="/discover">Find Another Tailor</Link>
-                        </Button>
+
+                     <div>
+                        <h3 className="text-lg font-semibold mb-3">Price Breakdown</h3>
+                        <div className="space-y-2 rounded-lg border p-4">
+                            <div className="flex justify-between">
+                                <span className="text-muted-foreground">Service Cost:</span>
+                                <span className="font-medium">${baseAmount.toFixed(2)}</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-muted-foreground">Platform Fee:</span>
+                                <span className="font-medium">${PLATFORM_FEE.toFixed(2)}</span>
+                            </div>
+                             <div className="flex justify-between">
+                                <span className="text-muted-foreground">Tax ({(TAX_RATE * 100).toFixed(0)}%):</span>
+                                <span className="font-medium">${taxAmount.toFixed(2)}</span>
+                            </div>
+                             <Separator className="my-2"/>
+                             <div className="flex justify-between font-bold text-lg">
+                                <span className="text-foreground">Total:</span>
+                                <span className="text-primary">${totalAmount.toFixed(2)}</span>
+                            </div>
+                        </div>
                     </div>
                 </CardContent>
+                <CardFooter>
+                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                        <CreditCard className="mr-2 h-5 w-5" />
+                        Place Order & Pay
+                    </Button>
+                </CardFooter>
             </Card>
         </div>
     );

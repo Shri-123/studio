@@ -81,7 +81,12 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (isFormValid) {
-        router.push(`/order/amount?service=${selectedService}`);
+        const queryParams = new URLSearchParams({
+            service: selectedService,
+            measurementOption: measurementOption,
+            deliveryOption: deliveryOption,
+        });
+        router.push(`/order/amount?${queryParams.toString()}`);
     }
   };
 
@@ -273,7 +278,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                       </div>
                     )}
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90" disabled={!isFormValid}>Submit Order</Button>
+                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={!isFormValid}>Submit Order</Button>
                 </CardContent>
             </form>
           </Card>
