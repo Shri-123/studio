@@ -13,9 +13,10 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink, ArrowRight, ArrowDown, ArrowLeft } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { Suspense } from 'react';
 
 const tailor = {
   id: 1,
@@ -43,13 +44,19 @@ const serviceMeasurements: { [key: string]: string[] } = {
   'jacket-lining': [],
 };
 
-export default function TailorProfilePage({ params }: { params: { id: string } }) {
+function TailorProfileContent({ params }: { params: { id: string } }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { toast } = useToast();
+
+  const initialService = searchParams.get('service') || '';
+  const initialMeasurementOption = searchParams.get('measurementOption') || '';
+  const initialDeliveryOption = searchParams.get('deliveryOption') || '';
+  
   const [unit, setUnit] = useState('in');
-  const [selectedService, setSelectedService] = useState('');
-  const [measurementOption, setMeasurementOption] = useState('');
-  const [deliveryOption, setDeliveryOption] = useState('');
+  const [selectedService, setSelectedService] = useState(initialService);
+  const [measurementOption, setMeasurementOption] = useState(initialMeasurementOption);
+  const [deliveryOption, setDeliveryOption] = useState(initialDeliveryOption);
   const [designFile, setDesignFile] = useState<File | null>(null);
   const [designPreview, setDesignPreview] = useState<string>('');
   
@@ -206,8 +213,8 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
           </Card>
         </div>
 
-        <div className="lg:col-span-1">
-          <Card className="sticky top-20 max-h-[calc(100vh-6rem)] flex flex-col">
+        <div className="lg:col-span-1 lg:sticky lg:top-20 h-fit">
+          <Card className="max-h-[calc(100vh-6rem)] flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl font-headline text-primary">
                 <Shirt className="h-6 w-6" />
@@ -374,4 +381,12 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
       </div>
     </div>
   );
+}
+
+export default function TailorProfilePage({ params }: { params: { id: string } }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TailorProfileContent params={params} />
+    </Suspense>
+  )
 }
