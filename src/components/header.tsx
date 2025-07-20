@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { Menu, Scissors, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -27,12 +26,12 @@ export default function Header() {
           </Link>
         </div>
         
-        <nav className="hidden md:flex gap-6 mx-auto">
+        <nav className="hidden md:flex gap-4 mx-auto">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-medium text-foreground/70 hover:text-primary transition-colors"
+              className="font-medium text-foreground/70 hover:text-primary transition-colors px-3 py-2 rounded-md hover:bg-muted"
             >
               {link.label}
             </Link>
