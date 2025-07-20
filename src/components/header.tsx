@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
   { href: '/discover', label: 'Discover' },
-  { href: '/account/orders', label: 'My Orders' },
-  { href: '/tailor/dashboard', label: 'Tailor Dashboard' },
 ];
 
 export default function Header() {
