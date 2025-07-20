@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, SlidersHorizontal, Star, Search } from 'lucide-react';
+import { MapPin, SlidersHorizontal, Star, Search, X } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { useState, useEffect } from 'react';
@@ -46,6 +46,12 @@ export default function DiscoverPage() {
     
     setFilteredTailors(tailors);
   }, [searchTerm, stitchingType, distance]);
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setStitchingType('all');
+    setDistance(15);
+  };
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
@@ -111,6 +117,12 @@ export default function DiscoverPage() {
                         </div>
                     </div>
                 </CardContent>
+                <CardFooter>
+                  <Button variant="ghost" className="w-full" onClick={clearFilters}>
+                    <X className="mr-2 h-4 w-4" />
+                    Clear Filters
+                  </Button>
+                </CardFooter>
             </Card>
         </aside>
         
