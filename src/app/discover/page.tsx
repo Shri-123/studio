@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, SlidersHorizontal, Star, Search, DollarSign } from 'lucide-react';
+import { MapPin, SlidersHorizontal, Star, Search } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { useState, useEffect } from 'react';
@@ -15,14 +15,14 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 
 const allTailors = [
-  { id: 1, name: 'Savile Row Creations', type: "Men's Fashion", distance: 1.2, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'tailor shop', priceRange: 2500 },
-  { id: 2, name: 'The Queen\'s Needle', type: "Women's Wear", distance: 2.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'fashion boutique', priceRange: 1500 },
-  { id: 3, name: 'Stitch Perfect Kids', type: 'Kids Apparel', distance: 3.1, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'children clothing', priceRange: 800 },
-  { id: 4, name: 'Modern Alterations', type: 'Alterations', distance: 4.0, rating: 4.6, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine', priceRange: 500 },
-  { id: 5, name: 'The Bridal Tailor', type: "Bridal Gowns", distance: 5.2, rating: 5.0, image: 'https://placehold.co/400x300.png', aihint: 'wedding dress', priceRange: 10000 },
-  { id: 6, name: 'Dapper Dans', type: "Men's Suits", distance: 6.8, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'mens suit', priceRange: 3000 },
-  { id: 7, name: 'Ultimate Alterations', type: 'Alterations', distance: 8.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine thread', priceRange: 400 },
-  { id: 8, name: 'Glamour Gowns', type: "Women's Wear", distance: 12.0, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'evening gown', priceRange: 5000 },
+  { id: 1, name: 'Savile Row Creations', type: "Men's Fashion", distance: 1.2, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'tailor shop' },
+  { id: 2, name: 'The Queen\'s Needle', type: "Women's Wear", distance: 2.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'fashion boutique' },
+  { id: 3, name: 'Stitch Perfect Kids', type: 'Kids Apparel', distance: 3.1, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'children clothing' },
+  { id: 4, name: 'Modern Alterations', type: 'Alterations', distance: 4.0, rating: 4.6, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine' },
+  { id: 5, name: 'The Bridal Tailor', type: "Bridal Gowns", distance: 5.2, rating: 5.0, image: 'https://placehold.co/400x300.png', aihint: 'wedding dress' },
+  { id: 6, name: 'Dapper Dans', type: "Men's Suits", distance: 6.8, rating: 4.8, image: 'https://placehold.co/400x300.png', aihint: 'mens suit' },
+  { id: 7, name: 'Ultimate Alterations', type: 'Alterations', distance: 8.5, rating: 4.9, image: 'https://placehold.co/400x300.png', aihint: 'sewing machine thread' },
+  { id: 8, name: 'Glamour Gowns', type: "Women's Wear", distance: 12.0, rating: 4.7, image: 'https://placehold.co/400x300.png', aihint: 'evening gown' },
 ];
 
 
@@ -31,7 +31,6 @@ export default function DiscoverPage() {
   const [stitchingType, setStitchingType] = useState('all');
   const [distance, setDistance] = useState(15);
   const [rating, setRating] = useState(1);
-  const [price, setPrice] = useState(10000);
   const [filteredTailors, setFilteredTailors] = useState(allTailors);
 
   useEffect(() => {
@@ -45,13 +44,11 @@ export default function DiscoverPage() {
       tailors = tailors.filter(tailor => tailor.type.toLowerCase().replace(/ /g, '-') === stitchingType);
     }
     
-    tailors = tailors.filter(tailor => tailor.priceRange <= price);
-    
     tailors = tailors.filter(tailor => tailor.distance <= distance);
     tailors = tailors.filter(tailor => tailor.rating >= rating);
     
     setFilteredTailors(tailors);
-  }, [searchTerm, stitchingType, distance, rating, price]);
+  }, [searchTerm, stitchingType, distance, rating]);
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
@@ -101,21 +98,6 @@ export default function DiscoverPage() {
                             </SelectContent>
                         </Select>
                     </div>
-                    <div className="grid gap-2">
-                        <Label htmlFor="price-range" className="text-sm font-medium">Max Price: ₹{price.toLocaleString()}</Label>
-                        <Slider 
-                            id="price-range" 
-                            min={100} 
-                            max={10000} 
-                            step={100} 
-                            value={[price]} 
-                            onValueChange={(value) => setPrice(value[0])}
-                        />
-                        <div className="flex justify-between text-xs text-muted-foreground">
-                            <span>₹100</span>
-                            <span>₹10,000</span>
-                        </div>
-                    </div>
                      <div className="grid gap-2">
                         <Label htmlFor="distance" className="text-sm font-medium">Max Distance: {distance} km</Label>
                         <Slider 
@@ -135,7 +117,7 @@ export default function DiscoverPage() {
                         <Label className="text-sm font-medium">Min Rating</Label>
                          <RadioGroup value={String(rating)} onValueChange={(val) => setRating(Number(val))} className="flex items-center space-x-2 pt-1">
                             {[1, 2, 3, 4].map(star => (
-                                <Button key={star} variant={rating >= star ? 'default' : 'outline'} size="sm" onClick={() => setRating(star)} className="flex-1">
+                                <Button key={star} variant={rating >= star ? 'default' : 'outline'} size="sm" onClick={() => setRating(star)}>
                                     {star} <Star className="h-4 w-4 ml-1.5 fill-current"/>
                                 </Button>
                             ))}
@@ -173,9 +155,6 @@ export default function DiscoverPage() {
                         <div className="flex items-center gap-1.5">
                             <MapPin className="h-4 w-4 text-accent" />
                             <span>{tailor.distance} km away</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                            <span className="font-bold text-lg text-primary">₹{tailor.priceRange.toLocaleString()}</span>
                         </div>
                     </div>
                 </CardContent>
