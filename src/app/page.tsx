@@ -165,9 +165,9 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                <MapPin className="h-8 w-8 text-primary" />
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group">
+               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 transition-colors group-hover:bg-primary/20">
+                <MapPin className="h-8 w-8 text-primary transition-colors group-hover:fill-primary" />
               </div>
               <h3 className="text-xl font-bold font-headline mb-2">Location-Based Discovery</h3>
               <p className="text-foreground/70">
@@ -175,9 +175,9 @@ export default function Home() {
                 distance filtering.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                <Clock className="h-8 w-8 text-primary" />
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group">
+               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 transition-colors group-hover:bg-primary/20">
+                <Clock className="h-8 w-8 text-primary transition-colors group-hover:fill-primary" />
               </div>
               <h3 className="text-xl font-bold font-headline mb-2">Real-Time Tracking</h3>
               <p className="text-foreground/70">
@@ -185,9 +185,9 @@ export default function Home() {
                 delivery.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-              <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                <Shield className="h-8 w-8 text-primary" />
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group">
+              <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 transition-colors group-hover:bg-primary/20">
+                <Shield className="h-8 w-8 text-primary transition-colors group-hover:fill-primary" />
               </div>
               <h3 className="text-xl font-bold font-headline mb-2">Secure Payments</h3>
               <p className="text-foreground/70">
@@ -195,9 +195,9 @@ export default function Home() {
                 escrow services.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                <Star className="h-8 w-8 text-primary" />
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group">
+               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 transition-colors group-hover:bg-primary/20">
+                <Star className="h-8 w-8 text-primary transition-colors group-hover:fill-primary" />
               </div>
               <h3 className="text-xl font-bold font-headline mb-2">Quality Assurance</h3>
               <p className="text-foreground/70">
@@ -205,9 +205,9 @@ export default function Home() {
                 showcase.
               </p>
             </Card>
-             <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                 <CheckCircle className="h-8 w-8 text-primary" />
+             <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group">
+               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 transition-colors group-hover:bg-primary/20">
+                 <CheckCircle className="h-8 w-8 text-primary transition-colors group-hover:fill-primary" />
               </div>
               <h3 className="text-xl font-bold font-headline mb-2">Easy to Use</h3>
               <p className="text-foreground/70">
@@ -215,9 +215,9 @@ export default function Home() {
                 interface.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
-              <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                <Users className="h-8 w-8 text-primary" />
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group">
+              <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 transition-colors group-hover:bg-primary/20">
+                <Users className="h-8 w-8 text-primary transition-colors group-hover:fill-primary" />
               </div>
               <h3 className="text-xl font-bold font-headline mb-2">Community Driven</h3>
               <p className="text-foreground/70">
