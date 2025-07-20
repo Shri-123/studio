@@ -37,10 +37,6 @@ export default function Header() {
           </nav>
         </div>
         
-        <div className="md:hidden flex-1 flex justify-end">
-           {/* Mobile menu trigger */}
-        </div>
-
         <div className="flex items-center gap-2">
            <div className="hidden md:flex items-center gap-2">
             <Button asChild variant="ghost">
