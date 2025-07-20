@@ -80,20 +80,20 @@ function AmountContent() {
                         <div className="space-y-2 rounded-lg border p-4">
                             <div className="flex justify-between">
                                 <span className="text-muted-foreground">Service Cost:</span>
-                                <span className="font-medium">${baseAmount.toFixed(2)}</span>
+                                <span className="font-medium">₹{baseAmount.toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-muted-foreground">Platform Fee:</span>
-                                <span className="font-medium">${PLATFORM_FEE.toFixed(2)}</span>
+                                <span className="font-medium">₹{PLATFORM_FEE.toFixed(2)}</span>
                             </div>
                              <div className="flex justify-between">
                                 <span className="text-muted-foreground">Tax ({(TAX_RATE * 100).toFixed(0)}%):</span>
-                                <span className="font-medium">${taxAmount.toFixed(2)}</span>
+                                <span className="font-medium">₹{taxAmount.toFixed(2)}</span>
                             </div>
                              <Separator className="my-2"/>
                              <div className="flex justify-between font-bold text-lg">
                                 <span className="text-foreground">Total:</span>
-                                <span className="text-primary">${totalAmount.toFixed(2)}</span>
+                                <span className="text-primary">₹{totalAmount.toFixed(2)}</span>
                             </div>
                         </div>
                     </div>

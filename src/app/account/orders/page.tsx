@@ -51,7 +51,7 @@ export default function CustomerOrdersPage() {
                         {order.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">${order.amount.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">₹{order.amount.toFixed(2)}</TableCell>
                   <TableCell className="text-right">
                     <Button variant="outline" size="sm">
                       <FileText className="h-4 w-4 mr-2" />

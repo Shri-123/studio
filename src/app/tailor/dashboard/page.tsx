@@ -31,7 +31,7 @@ export default function TailorDashboardPage() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$4,231.89</div>
+            <div className="text-2xl font-bold">₹4,231.89</div>
             <p className="text-xs text-muted-foreground">+20.1% from last month</p>
           </CardContent>
         </Card>
@@ -99,7 +99,7 @@ export default function TailorDashboardPage() {
                         {order.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">${order.amount.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">₹{order.amount.toFixed(2)}</TableCell>
                   <TableCell className="text-right">
                     <Button asChild variant="ghost" size="sm">
                       <Link href={`/tailor/dashboard/order/${order.id}`}>

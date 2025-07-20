@@ -100,7 +100,7 @@ export default function OrderDetailsPage({ params }: { params: { id: string } })
                <Separator />
                <div className="space-y-2">
                   <h4 className="font-semibold flex items-center gap-2"><DollarSign className="h-4 w-4 text-accent" /> Amount</h4>
-                  <p className="text-foreground/80 font-bold text-lg">${orderDetails.amount.toFixed(2)}</p>
+                  <p className="text-foreground/80 font-bold text-lg">₹{orderDetails.amount.toFixed(2)}</p>
               </div>
             </CardContent>
           </Card>
