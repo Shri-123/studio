@@ -10,9 +10,9 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck } from 'lucide-react';
+import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const tailor = {
   id: 1,
@@ -44,6 +44,22 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
   const [unit, setUnit] = useState('in');
   const [selectedService, setSelectedService] = useState('');
   const [measurementOption, setMeasurementOption] = useState('provide-own');
+  const [designFile, setDesignFile] = useState<File | null>(null);
+  const [designPreview, setDesignPreview] = useState<string>('');
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setDesignFile(file);
+      const previewUrl = URL.createObjectURL(file);
+      setDesignPreview(previewUrl);
+    } else {
+      setDesignFile(null);
+      setDesignPreview('');
+    }
+  };
   
   const measurements = selectedService ? serviceMeasurements[selectedService] : [];
 
@@ -204,7 +220,35 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
               </div>
               <div className="space-y-2">
                 <Label htmlFor="image-upload">Upload Design (Optional)</Label>
-                <Input id="image-upload" type="file" />
+                <Input
+                  id="image-upload"
+                  type="file"
+                  ref={fileInputRef}
+                  className="hidden"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <FileUp className="mr-2 h-4 w-4" />
+                  Browse Design
+                </Button>
+                {designFile && designPreview && (
+                  <div className="mt-2 text-sm text-muted-foreground">
+                    <a
+                      href={designPreview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-primary underline hover:text-primary/80"
+                    >
+                      <span>{designFile.name}</span>
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                )}
               </div>
               <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">Submit Order</Button>
             </CardContent>
@@ -214,4 +258,3 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
-
