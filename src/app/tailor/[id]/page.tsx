@@ -46,8 +46,8 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
   const { toast } = useToast();
   const [unit, setUnit] = useState('in');
   const [selectedService, setSelectedService] = useState('');
-  const [measurementOption, setMeasurementOption] = useState('provide-own');
-  const [deliveryOption, setDeliveryOption] = useState('pickup');
+  const [measurementOption, setMeasurementOption] = useState('');
+  const [deliveryOption, setDeliveryOption] = useState('');
   const [designFile, setDesignFile] = useState<File | null>(null);
   const [designPreview, setDesignPreview] = useState<string>('');
   
@@ -74,6 +74,24 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
         toast({
             title: "Incomplete Order",
             description: "Please select a service before proceeding.",
+            variant: "destructive",
+        });
+        return;
+    }
+    
+    if (!measurementOption) {
+        toast({
+            title: "Incomplete Order",
+            description: "Please select a measurement option.",
+            variant: "destructive",
+        });
+        return;
+    }
+    
+    if (!deliveryOption) {
+        toast({
+            title: "Incomplete Order",
+            description: "Please select a delivery option for the finished garment.",
             variant: "destructive",
         });
         return;
