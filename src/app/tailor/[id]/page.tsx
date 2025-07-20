@@ -118,6 +118,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                         <SelectContent>
                             <SelectItem value="in">in</SelectItem>
                             <SelectItem value="cm">cm</SelectItem>
+                            <SelectItem value="m">m</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
@@ -165,3 +166,4 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
+
