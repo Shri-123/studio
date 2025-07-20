@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Scissors, Target, Users, Search, MapPin, Clock, Shield, Star, Smartphone, UserCheck, CheckCircle } from 'lucide-react';
+import { Scissors, Search, MapPin, Clock, Shield, Star, Users, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -66,7 +66,7 @@ export default function Home() {
                 </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <Card className="bg-card p-6 md:p-8 hover:shadow-xl transition-shadow duration-300">
+                <Card className="bg-card p-6 md:p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                     <CardHeader className="p-0 mb-6 flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg">
                            <Users className="h-8 w-8 text-primary" />
@@ -108,7 +108,7 @@ export default function Home() {
                         </Button>
                     </CardContent>
                 </Card>
-                <Card className="bg-card p-6 md:p-8 hover:shadow-xl transition-shadow duration-300 border-2 border-primary/50 shadow-primary/10">
+                <Card className="bg-card p-6 md:p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-primary/50 shadow-primary/10">
                      <CardHeader className="p-0 mb-6 flex-row items-center gap-4">
                         <div className="p-3 bg-primary/10 rounded-lg">
                            <Scissors className="h-8 w-8 text-primary" />
@@ -167,7 +167,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-card text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
                 <MapPin className="h-8 w-8 text-primary" />
               </div>
@@ -177,7 +177,7 @@ export default function Home() {
                 distance filtering.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
                 <Clock className="h-8 w-8 text-primary" />
               </div>
@@ -187,7 +187,7 @@ export default function Home() {
                 delivery.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
                 <Shield className="h-8 w-8 text-primary" />
               </div>
@@ -197,7 +197,7 @@ export default function Home() {
                 escrow services.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
                 <Star className="h-8 w-8 text-primary" />
               </div>
@@ -207,17 +207,17 @@ export default function Home() {
                 showcase.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg transition-shadow">
+             <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
-                <Smartphone className="h-8 w-8 text-primary" />
+                 <CheckCircle className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold font-headline mb-2">Mobile-First Design</h3>
+              <h3 className="text-xl font-bold font-headline mb-2">Easy to Use</h3>
               <p className="text-foreground/70">
-                Seamless experience across all devices with intuitive mobile
+                 Seamless experience across all devices with intuitive mobile
                 interface.
               </p>
             </Card>
-            <Card className="bg-card text-center p-6 hover:shadow-lg transition-shadow">
+            <Card className="bg-card text-center p-6 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
               <div className="mb-4 inline-block rounded-full bg-primary/10 p-4">
                 <Users className="h-8 w-8 text-primary" />
               </div>
