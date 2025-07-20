@@ -158,7 +158,7 @@ export default function DiscoverPage() {
                     </div>
                 </CardContent>
                 <CardFooter className="p-4 pt-0">
-                    <Button asChild className="w-full bg-accent hover:bg-accent/90">
+                    <Button asChild className="w-full">
                     <Link href={`/tailor/${tailor.id}`}>View Profile</Link>
                     </Button>
                 </CardFooter>
