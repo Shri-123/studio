@@ -36,11 +36,21 @@ function AmountContent() {
     const taxAmount = baseAmount * TAX_RATE;
     const totalAmount = baseAmount + taxAmount + PLATFORM_FEE;
 
+    const handleEditOrder = () => {
+        const queryParams = new URLSearchParams({
+            service: service,
+            measurementOption: measurementOption,
+            deliveryOption: deliveryOption,
+        }).toString();
+        // Assuming the tailor ID is 1 for this example. In a real app, you'd get this from the URL or state.
+        router.push(`/tailor/1?${queryParams}`);
+    };
+
     return (
         <div className="min-h-screen w-full bg-background relative flex items-center justify-center p-4">
              <Button
                 variant="ghost"
-                onClick={() => router.back()}
+                onClick={handleEditOrder}
                 className="absolute top-4 left-4 sm:top-8 sm:left-8 flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
                 <ArrowLeft className="mr-2 h-4 w-4" />
