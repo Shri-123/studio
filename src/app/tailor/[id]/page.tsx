@@ -351,7 +351,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                         <Button asChild variant="outline" size="lg" className="w-full">
                             <Link href="/discover">
                                 <ArrowLeft className="mr-2 h-5 w-5" />
-                                Back to Discover
+                                Back
                             </Link>
                         </Button>
                         <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
