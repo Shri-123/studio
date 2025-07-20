@@ -11,11 +11,11 @@ export default function Home() {
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center">
         <div className="absolute inset-0">
             <Image
-                src="https://placehold.co/1200x800.png"
+                src="https://images.unsplash.com/photo-1588497883177-f82b883ad0af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMwfHx0YWlsb3IlMjBtYWNoaW5lfGVufDB8MHwwfHx8MA%3D%3D"
                 alt="Person getting measured by a tailor"
                 layout="fill"
                 objectFit="cover"
-                className="opacity-20"
+                className="opacity-100"
                 data-ai-hint="tailor measurement"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
