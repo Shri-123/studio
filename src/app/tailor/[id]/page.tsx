@@ -11,8 +11,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink, ArrowRight } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 const tailor = {
   id: 1,
@@ -42,26 +43,15 @@ const serviceMeasurements: { [key: string]: string[] } = {
 
 export default function TailorProfilePage({ params }: { params: { id: string } }) {
   const router = useRouter();
+  const { toast } = useToast();
   const [unit, setUnit] = useState('in');
   const [selectedService, setSelectedService] = useState('');
   const [measurementOption, setMeasurementOption] = useState('provide-own');
   const [deliveryOption, setDeliveryOption] = useState('pickup');
   const [designFile, setDesignFile] = useState<File | null>(null);
   const [designPreview, setDesignPreview] = useState<string>('');
-  const [isFormValid, setIsFormValid] = useState(false);
-
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const validateForm = () => {
-        if (!selectedService || !measurementOption || !deliveryOption) {
-            return false;
-        }
-        return true;
-    };
-    setIsFormValid(validateForm());
-  }, [selectedService, measurementOption, deliveryOption]);
-
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -79,14 +69,22 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (isFormValid) {
-        const queryParams = new URLSearchParams({
-            service: selectedService,
-            measurementOption: measurementOption,
-            deliveryOption: deliveryOption,
+
+    if (!selectedService) {
+        toast({
+            title: "Incomplete Order",
+            description: "Please select a service before proceeding.",
+            variant: "destructive",
         });
-        router.push(`/order/amount?${queryParams.toString()}`);
+        return;
     }
+
+    const queryParams = new URLSearchParams({
+        service: selectedService,
+        measurementOption: measurementOption,
+        deliveryOption: deliveryOption,
+    });
+    router.push(`/order/amount?${queryParams.toString()}`);
   };
 
   return (
@@ -247,23 +245,25 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="image-upload">Upload Design (Optional)</Label>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="w-full"
-                      onClick={() => fileInputRef.current?.click()}
-                    >
-                      <FileUp className="mr-2 h-4 w-4" />
-                      Browse Design
-                    </Button>
-                    <Input
-                      id="image-upload"
-                      type="file"
-                      ref={fileInputRef}
-                      className="hidden"
-                      onChange={handleFileChange}
-                      accept="image/*"
-                    />
+                    <div className="mt-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => fileInputRef.current?.click()}
+                      >
+                        <FileUp className="mr-2 h-4 w-4" />
+                        Browse Design
+                      </Button>
+                      <Input
+                        id="image-upload"
+                        type="file"
+                        ref={fileInputRef}
+                        className="hidden"
+                        onChange={handleFileChange}
+                        accept="image/*"
+                      />
+                    </div>
                     {designFile && designPreview && (
                       <div className="mt-2 text-sm text-muted-foreground">
                         <a
@@ -278,7 +278,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                       </div>
                     )}
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={!isFormValid}>
+                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                     Proceed to Order
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
