@@ -11,7 +11,7 @@ export default function Footer() {
             <span className="font-bold text-lg font-headline text-primary">StitchLink</span>
           </div>
           <nav className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm text-foreground/70">
-            <Link href="/about" className="hover:text-primary transition-colors">About Us</Link>
+            <Link href="/#about" className="hover:text-primary transition-colors">About Us</Link>
             <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
             <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
             <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
