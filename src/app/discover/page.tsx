@@ -28,7 +28,7 @@ const allTailors = [
 export default function DiscoverPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [stitchingType, setStitchingType] = useState('all');
-  const [distance, setDistance] = useState(15);
+  const [distance, setDistance] = useState(5);
   const [filteredTailors, setFilteredTailors] = useState(allTailors);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function DiscoverPage() {
   const clearFilters = () => {
     setSearchTerm('');
     setStitchingType('all');
-    setDistance(15);
+    setDistance(5);
   };
 
   return (
