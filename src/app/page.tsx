@@ -6,8 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
   return (
-    <>
-      <div className="flex flex-col min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col min-h-[calc(100vh-4rem)]">
         <section className="relative w-full py-20 md:py-32 lg:py-40 bg-background overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 z-10 relative">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
@@ -88,6 +87,5 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </>
   );
 }
