@@ -2,6 +2,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -9,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink, ArrowRight, ArrowDown } from 'lucide-react';
+import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink, ArrowRight, ArrowDown, ArrowLeft } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -346,7 +347,13 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                         )}
                       </div>
                     </CardContent>
-                    <CardFooter className="pt-6">
+                    <CardFooter className="pt-6 flex flex-col gap-2">
+                        <Button asChild variant="outline" size="lg" className="w-full">
+                            <Link href="/discover">
+                                <ArrowLeft className="mr-2 h-5 w-5" />
+                                Back to Discover
+                            </Link>
+                        </Button>
                         <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                             Proceed to Order
                             <ArrowRight className="ml-2 h-5 w-5" />
