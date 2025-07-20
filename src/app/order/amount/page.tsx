@@ -1,11 +1,10 @@
 // src/app/order/amount/page.tsx
 "use client";
 
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ArrowLeft, CreditCard, ShoppingBag, Truck } from 'lucide-react';
+import { ArrowLeft, CreditCard, ShoppingBag, Truck, ArrowRight } from 'lucide-react';
 import { Suspense } from 'react';
 import { Separator } from '@/components/ui/separator';
 
@@ -27,6 +26,7 @@ function toTitleCase(str: string) {
 
 
 function AmountContent() {
+    const router = useRouter();
     const searchParams = useSearchParams();
     const service = searchParams.get('service') || '';
     const measurementOption = searchParams.get('measurementOption') || 'provide-own';
@@ -38,10 +38,14 @@ function AmountContent() {
 
     return (
         <div className="min-h-screen w-full bg-background relative flex items-center justify-center p-4">
-             <Link href="/" className="absolute top-4 left-4 sm:top-8 sm:left-8 flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+             <Button
+                variant="ghost"
+                onClick={() => router.back()}
+                className="absolute top-4 left-4 sm:top-8 sm:left-8 flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Home
-            </Link>
+                Edit Order
+            </Button>
             <Card className="w-full max-w-lg mx-auto">
                 <CardHeader>
                     <CardTitle className="text-3xl font-headline text-primary">Confirm Your Order</CardTitle>

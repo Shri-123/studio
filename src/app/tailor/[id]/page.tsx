@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink } from 'lucide-react';
+import { Clock, DollarSign, MapPin, Phone, Shirt, Star, Home, Ruler, Scissors, ShoppingBag, Truck, FileUp, ExternalLink, ArrowRight } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -278,7 +278,10 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                       </div>
                     )}
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={!isFormValid}>Submit Order</Button>
+                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={!isFormValid}>
+                    Proceed to Order
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
                 </CardContent>
             </form>
           </Card>
