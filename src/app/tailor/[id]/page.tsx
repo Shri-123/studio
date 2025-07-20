@@ -55,6 +55,7 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formCardRef = useRef<HTMLDivElement>(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [userHasScrolled, setUserHasScrolled] = useState(false);
 
   useEffect(() => {
     const card = formCardRef.current;
@@ -62,22 +63,32 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
 
     const checkScroll = () => {
       const isScrollable = card.scrollHeight > card.clientHeight;
-      const isAtBottom = card.scrollHeight - card.scrollTop <= card.clientHeight + 2; 
-      setShowScrollIndicator(isScrollable && !isAtBottom);
+      if (userHasScrolled) {
+        setShowScrollIndicator(false);
+        return;
+      }
+      setShowScrollIndicator(isScrollable);
     };
+    
+    const handleScroll = () => {
+        if (card.scrollTop > 0 && !userHasScrolled) {
+            setUserHasScrolled(true);
+            setShowScrollIndicator(false);
+        }
+    }
 
     checkScroll();
 
-    card.addEventListener('scroll', checkScroll);
+    card.addEventListener('scroll', handleScroll);
     
     const resizeObserver = new ResizeObserver(checkScroll);
     resizeObserver.observe(card);
 
     return () => {
-      card.removeEventListener('scroll', checkScroll);
+      card.removeEventListener('scroll', handleScroll);
       resizeObserver.unobserve(card);
     };
-  }, [selectedService, measurementOption]);
+  }, [selectedService, measurementOption, userHasScrolled]);
 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,6 +100,16 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
     } else {
       setDesignFile(null);
       setDesignPreview('');
+    }
+  };
+
+  const handleScrollClick = () => {
+    const card = formCardRef.current;
+    if(card) {
+        card.scrollTo({
+            top: card.scrollHeight,
+            behavior: 'smooth'
+        });
     }
   };
   
@@ -333,7 +354,10 @@ export default function TailorProfilePage({ params }: { params: { id: string } }
                     </CardFooter>
                 </form>
             </div>
-            <div className={cn("absolute bottom-16 left-1/2 -translate-x-1/2 transition-opacity duration-300", showScrollIndicator ? 'opacity-100' : 'opacity-0')}>
+            <div 
+                className={cn("absolute bottom-16 left-1/2 -translate-x-1/2 transition-opacity duration-300 cursor-pointer", showScrollIndicator ? 'opacity-100' : 'opacity-0')}
+                onClick={handleScrollClick}
+            >
                 <div className="animate-bounce rounded-full bg-primary p-2">
                     <ArrowDown className="h-6 w-6 text-primary-foreground" />
                 </div>
