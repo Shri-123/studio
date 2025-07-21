@@ -1,15 +1,14 @@
-
 "use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Menu, Scissors, Search, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, Scissors, Search, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/#features', label: 'Why Us?' },
+  { href: "/", label: "Home" },
+  { href: "/#features", label: "Why Us?" },
 ];
 
 export default function Header() {
@@ -21,10 +20,12 @@ export default function Header() {
         <div className="mr-auto flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Scissors className="h-6 w-6 text-primary" />
-            <span className="font-bold text-lg font-headline text-primary">StitchLink</span>
+            <span className="font-bold text-lg font-headline text-primary">
+              StitchLink
+            </span>
           </Link>
         </div>
-        
+
         <nav className="hidden md:flex items-center gap-4 mx-auto">
           {navLinks.map((link) => (
             <Link
@@ -35,21 +36,21 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-           <Button asChild variant="outline" size="sm">
-              <Link href="/discover">
-                <Search className="mr-2 h-4 w-4" />
-                Find a Tailor
-              </Link>
-           </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/discover">
+              <Search className="mr-2 h-4 w-4" />
+              Find Tailors near me
+            </Link>
+          </Button>
         </nav>
-        
+
         <div className="hidden md:flex items-center gap-2 ml-auto">
-           <Button asChild variant="ghost">
+          <Button asChild variant="ghost">
             <Link href="/login">Login</Link>
           </Button>
           <Button asChild>
-              <Link href="/signup">Sign Up</Link>
-            </Button>
+            <Link href="/signup">Sign Up</Link>
+          </Button>
         </div>
 
         <div className="md:hidden ml-auto">
@@ -62,9 +63,15 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <div className="flex flex-col gap-6 p-6">
-                <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link
+                  href="/"
+                  className="flex items-center gap-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   <Scissors className="h-6 w-6 text-primary" />
-                  <span className="font-bold text-lg font-headline text-primary">StitchLink</span>
+                  <span className="font-bold text-lg font-headline text-primary">
+                    StitchLink
+                  </span>
                 </Link>
                 <nav className="flex flex-col gap-4">
                   {navLinks.map((link) => (
@@ -77,23 +84,33 @@ export default function Header() {
                       {link.label}
                     </Link>
                   ))}
-                   <Link
-                      href="/discover"
-                      className="flex items-center text-lg font-medium text-foreground hover:text-primary transition-colors"
+                  <Link
+                    href="/discover"
+                    className="flex items-center text-lg font-medium text-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Search className="mr-2 h-5 w-5" />
+                    Find a Tailor
+                  </Link>
+                </nav>
+                <div className="flex flex-col gap-2 border-t pt-6">
+                  <Button asChild variant="ghost">
+                    <Link
+                      href="/login"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <Search className="mr-2 h-5 w-5" />
-                      Find a Tailor
+                      Login
                     </Link>
-                </nav>
-                 <div className="flex flex-col gap-2 border-t pt-6">
-                    <Button asChild variant="ghost">
-                      <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
-                    </Button>
-                    <Button asChild>
-                      <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</Link>
-                    </Button>
-                  </div>
+                  </Button>
+                  <Button asChild>
+                    <Link
+                      href="/signup"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
